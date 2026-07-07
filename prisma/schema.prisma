@@ -1,0 +1,313 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "windows"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum InternshipCategory {
+  DATA_ANALYTICS
+  POWER_BI
+  SQL
+  PYTHON
+  MACHINE_LEARNING
+  AI_TOOLS
+  WEB_DEVELOPMENT
+  BUSINESS_ANALYTICS
+}
+
+enum EnrollmentStatus {
+  ENROLLED
+  IN_PROGRESS
+  COMPLETED
+  DROPPED
+}
+
+enum SubmissionStatus {
+  PENDING
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  RESUBMIT
+}
+
+enum CertificateStatus {
+  ACTIVE
+  REVOKED
+  EXPIRED
+}
+
+enum NotificationType {
+  ASSIGNMENT
+  CERTIFICATE
+  ENROLLMENT
+  SUBMISSION
+  SYSTEM
+}
+
+model User {
+  id                String   @id @default(cuid())
+  clerkId           String   @unique
+  email             String   @unique
+  firstName         String?
+  lastName          String?
+  avatarUrl         String?
+  role              UserRole @default(STUDENT)
+  bio               String?
+  phone             String?
+  linkedinUrl       String?
+  githubUrl         String?
+  jobReadinessScore Int      @default(0)
+  totalPoints       Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  enrollments   Enrollment[]
+  submissions   Submission[]
+  certificates  Certificate[]
+  badges        UserBadge[]
+  notifications Notification[]
+  resume        Resume?
+  portfolio     Portfolio?
+
+  @@index([clerkId])
+  @@index([email])
+  @@index([role])
+}
+
+model Internship {
+  id               String             @id @default(cuid())
+  title            String
+  slug             String             @unique
+  category         InternshipCategory
+  description      String             @db.Text
+  shortDescription String
+  duration         String
+  durationWeeks    Int
+  skills           String[]
+  projects         String[]
+  learningOutcomes String[]
+  curriculum       Json
+  resources        Json?
+  isFeatured       Boolean            @default(false)
+  isActive         Boolean            @default(true)
+  maxStudents      Int                @default(100)
+  thumbnailUrl     String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  assignments  Assignment[]
+  enrollments  Enrollment[]
+  certificates Certificate[]
+
+  @@index([slug])
+  @@index([category])
+  @@index([isFeatured])
+}
+
+model Assignment {
+  id           String   @id @default(cuid())
+  internshipId String
+  title        String
+  description  String   @db.Text
+  weekNumber   Int
+  dueDate      DateTime?
+  maxScore     Int      @default(100)
+  isFinal      Boolean  @default(false)
+  allowedTypes String[] @default(["pdf", "zip", "xlsx", "pbix", "png", "jpg"])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  internship  Internship   @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+  submissions Submission[]
+
+  @@index([internshipId])
+  @@index([weekNumber])
+}
+
+model Enrollment {
+  id           String           @id @default(cuid())
+  userId       String
+  internshipId String
+  status       EnrollmentStatus @default(ENROLLED)
+  progress     Int              @default(0)
+  enrolledAt   DateTime         @default(now())
+  completedAt  DateTime?
+  updatedAt    DateTime         @updatedAt
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  internship Internship @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, internshipId])
+  @@index([userId])
+  @@index([internshipId])
+  @@index([status])
+}
+
+model Submission {
+  id           String           @id @default(cuid())
+  userId       String
+  assignmentId String
+  fileUrl      String
+  fileName     String
+  fileType     String
+  fileSize     Int
+  status       SubmissionStatus @default(SUBMITTED)
+  score        Int?
+  feedback     String?          @db.Text
+  submittedAt  DateTime         @default(now())
+  reviewedAt   DateTime?
+  reviewedBy   String?
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignment Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([assignmentId])
+  @@index([status])
+}
+
+model Certificate {
+  id              String            @id @default(cuid())
+  certificateId   String            @unique
+  userId          String
+  internshipId    String
+  studentName     String
+  programName     String
+  duration        String
+  skillsCovered   String[]
+  score           Int
+  status          CertificateStatus @default(ACTIVE)
+  pdfUrl          String?
+  qrCodeUrl       String?
+  issuedAt        DateTime          @default(now())
+  issuedBy        String?
+  verificationUrl String
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  internship Internship @relation(fields: [internshipId], references: [id], onDelete: Cascade)
+
+  @@index([certificateId])
+  @@index([userId])
+  @@index([status])
+}
+
+model Badge {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String
+  iconUrl     String?
+  criteria    String
+  points      Int      @default(10)
+  createdAt   DateTime @default(now())
+
+  users UserBadge[]
+}
+
+model UserBadge {
+  id       String   @id @default(cuid())
+  userId   String
+  badgeId  String
+  earnedAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge Badge @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  company   String?
+  content   String   @db.Text
+  avatarUrl String?
+  rating    Int      @default(5)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  excerpt     String
+  content     String    @db.Text
+  coverImage  String?
+  author      String
+  isPublished Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  link      String?
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+}
+
+model Resume {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  summary    String?  @db.Text
+  experience Json?
+  education  Json?
+  skills     String[]
+  projects   Json?
+  fileUrl    String?
+  fileName   String?
+  fileType   String?
+  fileSize   Int?
+  updatedAt  DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  title       String?
+  description String?  @db.Text
+  projects    Json?
+  isPublic    Boolean  @default(false)
+  slug        String?  @unique
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
