@@ -97,7 +97,7 @@ export function CareerSupportSection() {
             {/* Right side - Message */}
             <div className="flex items-center">
               <p className="text-navy-600 text-lg leading-relaxed">
-                We don't promise placements — just the skills, confidence, and network you need to
+We don&apos;t promise placements — just the skills, confidence, and network you need to
                 walk into interviews and succeed on your own terms.
               </p>
             </div>

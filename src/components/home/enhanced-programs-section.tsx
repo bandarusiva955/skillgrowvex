@@ -40,8 +40,8 @@ export function EnhancedProgramsSection() {
             Ten Paths. One Destination.
           </h2>
           <p className="mt-4 text-navy-500 max-w-3xl mx-auto text-lg">
-            Every course is built backwards from real job descriptions — no filler, no theory for
-            theory's sake. Just skills that get you hired.
+Every course is built backwards from real job descriptions — no filler, no theory for
+            theory&apos;s sake. Just skills that get you hired.
           </p>
         </motion.div>
 
@@ -140,7 +140,7 @@ export function EnhancedProgramsSection() {
         >
           <p className="text-navy-600 mb-4">Not sure which course is right for you?</p>
           <p className="text-sm text-navy-500 mb-6">
-            Talk to us — we'll understand your background and recommend the best starting point for your journey.
+Talk to us — we&apos;ll understand your background and recommend the best starting point for your journey.
           </p>
           <button className="bg-brand-navy hover:bg-brand-navy/90 text-brand-gold font-semibold py-3 px-8 rounded-lg transition-colors">
             Talk to Us →

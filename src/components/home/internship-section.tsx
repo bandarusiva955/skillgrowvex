@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { INTERNSHIP_OPPORTUNITIES } from "@/lib/constants";
 import { X, Mail, Phone, Linkedin, Users, Clock, Zap } from "lucide-react";
-import * as LucideIcons from "lucide-react";
 
 interface InternshipModalProps {
   internship: (typeof INTERNSHIP_OPPORTUNITIES)[0];

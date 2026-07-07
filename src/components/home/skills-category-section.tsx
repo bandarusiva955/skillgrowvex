@@ -87,8 +87,8 @@ export function SkillsCategorySection() {
             Learn By Doing, Not Just Watching
           </h3>
           <p className="text-brand-cream max-w-2xl mx-auto mb-6">
-            Every skill is taught through practical application. You'll write code, analyze data,
-            and build projects from day one — so you truly understand what you're learning.
+            Every skill is taught through practical application. You&apos;ll write code, analyze data,
+            and build projects from day one — so you truly understand what you&apos;re learning.
           </p>
 
           <div className="grid gap-4 md:grid-cols-3 max-w-2xl mx-auto">
