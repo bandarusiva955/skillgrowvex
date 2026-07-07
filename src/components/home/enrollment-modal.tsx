@@ -286,7 +286,8 @@ export function EnrollmentModal({ isOpen, onClose, courseTitle }: EnrollmentModa
                   {/* Learning Goal */}
                   <div>
                     <label className="block text-sm font-semibold text-brand-navy mb-2">
-                      What's Your Learning Goal?
+                      What&apos;s Your Learning Goal?
+
                     </label>
                     <textarea
                       name="learningGoal"

@@ -32,7 +32,9 @@ export function RoadmapSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {DOMAIN_ROADMAP.map((domain, index) => {
             const IconComponent =
-              LucideIcons[domain.icon as keyof typeof LucideIcons] || LucideIcons.Code2;
+              (LucideIcons[domain.icon as keyof typeof LucideIcons] as unknown as React.ElementType) ||
+              (LucideIcons.Code2 as unknown as React.ElementType);
+
             const isExpanded = expandedDomain === domain.domain;
 
             return (
@@ -68,7 +70,11 @@ export function RoadmapSection() {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="p-3 bg-brand-navy rounded-lg">
-                          <IconComponent className="w-6 h-6 text-brand-gold" />
+                          {(() => {
+                            const Comp = IconComponent as React.ElementType;
+                            return <Comp className="w-6 h-6 text-brand-gold" />;
+                          })()}
+
                         </div>
                         <div>
                           <h3 className="text-xl font-bold text-white">{domain.domain}</h3>
