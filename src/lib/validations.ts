@@ -7,6 +7,29 @@ export const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
+export const applicationSchema = z.object({
+  fullName: z.string().min(2, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Valid phone number required"),
+  gender: z.string().min(1, "Please select gender"),
+  dateOfBirth: z.string().min(1, "Date of birth is required"),
+  college: z.string().min(2, "College name is required"),
+  branch: z.string().min(2, "Branch is required"),
+  graduationYear: z.string().min(4, "Graduation year is required"),
+  city: z.string().min(2, "City is required"),
+  state: z.string().min(2, "State is required"),
+  preferredInternship: z.string().min(1, "Please select an internship plan"),
+  skills: z.string().optional(),
+  programmingLanguages: z.string().optional(),
+  experienceLevel: z.string().min(1, "Experience level is required"),
+  careerGoal: z.string().min(10, "Please describe your career goal"),
+  githubUrl: z.string().url().optional().or(z.literal("")),
+  linkedinUrl: z.string().url().optional().or(z.literal("")),
+  portfolioUrl: z.string().url().optional().or(z.literal("")),
+  message: z.string().optional(),
+  agreeToTerms: z.literal(true, { errorMap: () => ({ message: "You must agree to terms" }) }),
+});
+
 export const verifySchema = z.object({
   certificateId: z
     .string()

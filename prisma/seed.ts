@@ -300,56 +300,7 @@ async function main() {
     });
   }
 
-  const testimonials = [
-    {
-      name: "Priya Sharma",
-      role: "Data Analyst",
-      company: "TechCorp India",
-      content:
-        "SkillGrowVex Academy transformed my career. The project-based approach gave me real portfolio pieces that impressed employers during interviews.",
-      rating: 5,
-    },
-    {
-      name: "Rahul Verma",
-      role: "Business Intelligence Developer",
-      company: "DataFlow Solutions",
-      content:
-        "The Power BI internship was incredibly practical. I went from zero knowledge to building enterprise dashboards in just 6 weeks.",
-      rating: 5,
-    },
-    {
-      name: "Ananya Patel",
-      role: "ML Engineer",
-      company: "AI Innovations",
-      content:
-        "The verified certificate with QR code helped me stand out on LinkedIn. Employers could instantly verify my credentials.",
-      rating: 5,
-    },
-    {
-      name: "Karthik Reddy",
-      role: "Full Stack Developer",
-      company: "StartupHub",
-      content:
-        "The web development program covered everything from basics to deployment. The capstone project became the centerpiece of my portfolio.",
-      rating: 5,
-    },
-    {
-      name: "Sneha Iyer",
-      role: "Business Analyst",
-      company: "Global Finance Ltd",
-      content:
-        "What sets SkillGrowVex apart is the mentorship and feedback on assignments. Every submission gets reviewed with detailed feedback.",
-      rating: 5,
-    },
-    {
-      name: "Arjun Mehta",
-      role: "Python Developer",
-      company: "CodeCraft",
-      content:
-        "The job readiness score and ranking system kept me motivated throughout the program. I finished in the top 5 of my cohort!",
-      rating: 5,
-    },
-  ];
+  const testimonials: Array<never> = [];
 
   for (const testimonial of testimonials) {
     const existing = await prisma.testimonial.findFirst({

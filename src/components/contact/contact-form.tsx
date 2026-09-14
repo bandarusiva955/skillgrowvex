@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { contactSchema } from "@/lib/validations";
+import { COURSES } from "@/lib/academy-data";
 import { z } from "zod";
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -88,8 +89,13 @@ export function ContactForm() {
             </div>
           </div>
           <div>
-            <Label htmlFor="subject">Subject</Label>
-            <Input id="subject" {...register("subject")} className="mt-1" />
+            <Label htmlFor="subject">Course or area of interest</Label>
+            <select id="subject" {...register("subject")} className="mt-1 flex h-10 w-full rounded-md border border-navy-200 bg-white px-3 py-2 text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-primary-500">
+              <option value="">Select an option</option>
+              {COURSES.map((course) => <option key={course.slug} value={course.title}>{course.title}</option>)}
+              <option value="Internship">Internship</option>
+              <option value="Career guidance">Career guidance</option>
+            </select>
             {errors.subject && (
               <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
             )}

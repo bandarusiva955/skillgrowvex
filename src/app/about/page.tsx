@@ -1,96 +1,59 @@
 import type { Metadata } from "next";
-import { Target, Eye, Heart, Award } from "lucide-react";
-import { SITE_CONFIG } from "@/lib/constants";
+import Link from "next/link";
+import { Target, Eye, Heart, Award, Rocket, ShieldCheck } from "lucide-react";
+import { PageHero } from "@/components/layout/page-hero";
+import { Button } from "@/components/ui/button";
+import { CORE_VALUES, SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about SkillGrowVex Academy, our mission, vision, and founder Bandaru Siva.",
+  description: "Learn about SkillGrow Vex Academy — an initiative by Grow Vex Technologies.",
 };
 
 const values = [
-  {
-    icon: Target,
-    title: "Excellence",
-    description: "We maintain the highest standards in curriculum design and student outcomes.",
-  },
-  {
-    icon: Heart,
-    title: "Empowerment",
-    description: "Every student deserves access to quality education and career opportunities.",
-  },
-  {
-    icon: Award,
-    title: "Integrity",
-    description: "Our verified certificates and transparent processes build lasting trust.",
-  },
-  {
-    icon: Eye,
-    title: "Innovation",
-    description: "We continuously evolve our programs to match industry demands.",
-  },
+  { icon: Target, title: "Innovation", description: "We evolve our programs to match industry demands." },
+  { icon: Heart, title: "Integrity", description: "Transparent processes and verified certificates build trust." },
+  { icon: Award, title: "Professionalism", description: "Industry-standard mentorship and career guidance." },
+  { icon: Rocket, title: "Growth", description: "Continuous learning support for every student." },
+  { icon: Eye, title: "Learning", description: "Hands-on projects that build real skills." },
+  { icon: ShieldCheck, title: "Student Success", description: "Your career readiness is our primary focus." },
 ];
 
 export default function AboutPage() {
   return (
     <div>
-      <section className="bg-hero-pattern py-20">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">
-            About SkillGrowVex Academy
-          </h1>
-          <p className="mt-4 text-lg text-navy-300 max-w-2xl mx-auto">
-            {SITE_CONFIG.tagline}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="About SkillGrow Vex Academy"
+        subtitle={SITE_CONFIG.tagline}
+      />
 
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div className="relative">
-              <div className="aspect-square max-w-md mx-auto rounded-2xl bg-gradient-to-br from-brand-navy to-navy-700 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <div className="text-6xl font-display font-bold text-brand-gold mb-2">BS</div>
-                  <p className="text-xl font-semibold">{SITE_CONFIG.founder.name}</p>
-                  <p className="text-sm text-navy-300">{SITE_CONFIG.founder.title}</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h2 className="font-display text-3xl font-bold text-brand-navy mb-6">
-                Founder&apos;s Story
-              </h2>
-              <p className="text-navy-600 leading-relaxed mb-4">
-                {SITE_CONFIG.founder.bio}
-              </p>
-              <p className="text-navy-600 leading-relaxed">
-                Under his leadership, SkillGrowVex Academy has trained thousands of students
-                across data analytics, programming, and business intelligence, with a 98%
-                program completion rate and industry-recognized certification system.
-              </p>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-lg leading-relaxed text-navy-600 dark:text-navy-300">
+              SkillGrow Vex Academy is an initiative by{" "}
+              <strong>{SITE_CONFIG.poweredBy}</strong> — a growing startup committed to
+              helping students gain practical experience through internships, real-world projects,
+              mentorship, and career preparation.
+            </p>
+            <p className="mt-4 text-navy-500 dark:text-navy-400">
+              We are not a large corporation. We are a passionate, MSME (Udyam) registered team
+              focused on quality learning and student success.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-brand-cream">
+      <section className="bg-brand-cream py-20 dark:bg-navy-900/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-xl bg-white p-8 shadow-premium">
-              <h3 className="font-display text-2xl font-bold text-brand-navy mb-4">Our Mission</h3>
-              <p className="text-navy-600 leading-relaxed">
-                To empower students with practical, industry-relevant skills through
-                project-based internships and verified certifications, bridging the gap
-                between academic learning and professional success.
-              </p>
+            <div className="rounded-2xl bg-white p-8 shadow-premium dark:bg-navy-900">
+              <h3 className="font-display text-2xl font-bold text-brand-navy dark:text-white">Our Mission</h3>
+              <p className="mt-4 leading-relaxed text-navy-600 dark:text-navy-300">{SITE_CONFIG.mission}</p>
             </div>
-            <div className="rounded-xl bg-white p-8 shadow-premium">
-              <h3 className="font-display text-2xl font-bold text-brand-navy mb-4">Our Vision</h3>
-              <p className="text-navy-600 leading-relaxed">
-                To become the leading EdTech platform for career development, serving
-                millions of students worldwide with accessible, high-quality internship
-                programs and placement assistance.
-              </p>
+            <div className="rounded-2xl bg-white p-8 shadow-premium dark:bg-navy-900">
+              <h3 className="font-display text-2xl font-bold text-brand-navy dark:text-white">Our Vision</h3>
+              <p className="mt-4 leading-relaxed text-navy-600 dark:text-navy-300">{SITE_CONFIG.vision}</p>
             </div>
           </div>
         </div>
@@ -98,25 +61,33 @@ export default function AboutPage() {
 
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl font-bold text-brand-navy text-center mb-12">
-            Our Values
+          <h2 className="mb-4 text-center font-display text-3xl font-bold text-brand-navy dark:text-white">
+            Core Values
           </h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <p className="mb-12 text-center text-navy-500">{CORE_VALUES.join(" • ")}</p>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {values.map((value) => {
               const Icon = value.icon;
               return (
-                <div key={value.title} className="text-center p-6">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-navy text-brand-gold">
+                <div key={value.title} className="rounded-2xl border border-navy-100 p-6 text-center dark:border-navy-700">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-gradient text-white">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="font-display text-lg font-semibold text-brand-navy">
-                    {value.title}
-                  </h3>
+                  <h3 className="font-display text-lg font-semibold text-brand-navy dark:text-white">{value.title}</h3>
                   <p className="mt-2 text-sm text-navy-500">{value.description}</p>
                 </div>
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-hero-gradient py-16 text-center text-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="font-display text-2xl font-bold">Ready to Start?</h2>
+          <Button variant="gold" size="lg" className="mt-6" asChild>
+            <Link href="/apply">Apply Now</Link>
+          </Button>
         </div>
       </section>
     </div>

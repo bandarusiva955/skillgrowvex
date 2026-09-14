@@ -5,7 +5,7 @@ import { STATS } from "@/lib/constants";
 
 export function StatsSection() {
   return (
-    <section className="border-b border-navy-100 bg-white py-16">
+    <section className="border-b border-navy-100 bg-white py-16 dark:border-navy-800 dark:bg-navy-950">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {STATS.map((stat, index) => (
@@ -17,10 +17,10 @@ export function StatsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="font-display text-3xl font-bold text-brand-navy lg:text-4xl">
+              <div className="font-display text-3xl font-bold text-primary-500 lg:text-4xl">
                 {stat.value}
               </div>
-              <div className="mt-2 text-sm text-navy-500">{stat.label}</div>
+              <div className="mt-2 text-sm text-navy-500 dark:text-navy-400">{stat.label}</div>
             </motion.div>
           ))}
         </div>

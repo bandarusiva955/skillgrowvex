@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Avoid OneDrive sync issues with the default `.next` folder name.
-  distDir: process.env.NEXT_DIST_DIR || "node_modules/.cache/sgv-next",
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com" },

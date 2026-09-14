@@ -11,6 +11,8 @@ const buttonVariants = cva(
         default:
           "bg-brand-navy text-white shadow-premium hover:bg-navy-800 active:scale-[0.98]",
         gold: "bg-gold-gradient text-brand-navy shadow-gold hover:opacity-90 active:scale-[0.98] font-semibold",
+        gradient:
+          "bg-brand-gradient text-white shadow-glow hover:opacity-90 active:scale-[0.98] font-semibold",
         outline:
           "border-2 border-brand-navy text-brand-navy bg-transparent hover:bg-brand-navy hover:text-white",
         ghost: "text-brand-navy hover:bg-navy-50",

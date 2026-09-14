@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node -e \"try{require('fs').rmSync('node_modules/.cache/sgv-next',{recursive:true,force:true})}catch(e){}\" && next dev -p 3000",
+    "dev": "node -e \"try{require('fs').rmSync('.next',{recursive:true,force:true})}catch(e){}\" && next dev -H 0.0.0.0 -p 3000",
     "dev:clean": "npm run dev",
     "build": "next build",
     "start": "next start",

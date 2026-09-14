@@ -8,6 +8,12 @@ import {
   Rocket,
   Clock,
   Target,
+  FileText,
+  ScanSearch,
+  Linkedin,
+  Github,
+  MessageSquare,
+  ClipboardCheck,
   LucideIcon,
 } from "lucide-react";
 import { WHY_CHOOSE_US } from "@/lib/constants";
@@ -19,28 +25,34 @@ const iconMap: Record<string, LucideIcon> = {
   Rocket,
   Clock,
   Target,
+  FileText,
+  ScanSearch,
+  Linkedin,
+  Github,
+  MessageSquare,
+  ClipboardCheck,
 };
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 bg-brand-cream">
+    <section className="section-padding bg-brand-cream dark:bg-navy-900/30">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="font-display text-3xl font-bold text-brand-navy lg:text-4xl">
-            Why Choose SkillGrowVex?
+          <h2 className="font-display text-3xl font-bold text-brand-navy dark:text-white lg:text-4xl">
+            Why Choose SkillGrow Vex?
           </h2>
-          <p className="mt-4 text-navy-500 max-w-2xl mx-auto">
-            We combine project-based learning with industry expertise to deliver
-            career-ready skills and verified credentials.
+          <p className="mx-auto mt-4 max-w-2xl text-navy-500 dark:text-navy-400">
+            Career preparation, interview readiness, portfolio development, and
+            professional mentorship — not empty placement promises.
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {WHY_CHOOSE_US.map((item, index) => {
             const Icon = iconMap[item.icon] || Target;
             return (
@@ -49,16 +61,16 @@ export function WhyChooseUs() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group rounded-xl bg-white p-8 shadow-premium transition-all hover:shadow-premium-lg hover:-translate-y-1"
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group rounded-2xl bg-white p-6 shadow-premium transition-all hover:-translate-y-1 hover:shadow-premium-lg dark:bg-navy-900"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-navy text-brand-gold transition-colors group-hover:bg-gold-gradient group-hover:text-brand-navy">
-                  <Icon className="h-6 w-6" />
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white transition-transform group-hover:scale-110">
+                  <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-brand-navy">
+                <h3 className="font-display text-base font-semibold text-brand-navy dark:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm text-navy-500 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-navy-500 dark:text-navy-400">
                   {item.description}
                 </p>
               </motion.div>
