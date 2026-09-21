@@ -29,9 +29,12 @@ export default function ProjectsPage() {
               <div
                 key={title}
                 className="group rounded-2xl border border-navy-100 bg-white p-6 shadow-premium transition-all hover:-translate-y-1 hover:shadow-premium-lg dark:border-navy-700 dark:bg-navy-900"
+              import { PageImage } from "@/components/layout/page-image";
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500">
                   <Icon className="h-6 w-6" />
+                        {/* TODO: swap with official SkillGrowVex branded image */}
+                        <PageImage src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&auto=format&fit=crop" alt="Analytics team working on a technology project" className="mb-12" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-brand-navy dark:text-white">
                   {title}

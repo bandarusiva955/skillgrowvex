@@ -7,10 +7,13 @@ import { FileText, ScanSearch, Upload, CheckCircle } from "lucide-react";
 export const metadata: Metadata = {
   title: "Resume Review",
   description: "Get professional ATS resume review and career presentation feedback at SkillGrow Vex Academy.",
+import { PageImage } from "@/components/layout/page-image";
 };
 
 const REVIEW_AREAS = [
   "Resume Formatting",
+      {/* TODO: swap with official SkillGrowVex branded image */}
+      <div className="container mx-auto px-4 pt-12 lg:px-8"><PageImage src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&auto=format&fit=crop" alt="Professional resume review workspace" /></div>
   "ATS Compatibility",
   "Skills Presentation",
   "Projects & Achievements",

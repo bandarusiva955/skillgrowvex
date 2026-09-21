@@ -17,6 +17,7 @@ import { EnrollButton } from "@/components/programs/enroll-button";
 import { formatCategory } from "@/lib/utils";
 import { db } from "@/lib/db";
 import { COURSES } from "@/lib/academy-data";
+import { PageImage } from "@/components/layout/page-image";
 
 interface ProgramDetailProps {
   params: Promise<{ slug: string }>;
@@ -99,6 +100,9 @@ export default async function ProgramDetailPage({ params }: ProgramDetailProps) 
           </div>
         </div>
       </section>
+
+      {/* TODO: swap with official SkillGrowVex branded image */}
+      <div className="container mx-auto px-4 pt-12 lg:px-8"><PageImage src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&auto=format&fit=crop" alt="Internship learners collaborating on a technology program" /></div>
 
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">

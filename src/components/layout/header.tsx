@@ -34,13 +34,13 @@ function AuthButtons({ className = "", onNavigate }: { className?: string; onNav
 
       <SignedOut>
 
-        <Button variant="ghost" className="text-[#aeb3a2] hover:bg-transparent hover:text-[#d6f85b]" asChild>
+        <Button variant="ghost" className="text-[#d6dce5] hover:bg-transparent hover:text-[#D4A017]" asChild>
 
           <Link href="/sign-in" onClick={onNavigate}>Login</Link>
 
         </Button>
 
-        <Button variant="gradient" className="bg-[#d6f85b] text-[#10110d] shadow-none hover:bg-[#efffa7]" asChild>
+        <Button variant="gradient" className="bg-[#D4A017] text-[#0A2540] shadow-none hover:bg-[#e8bd49]" asChild>
 
           <Link href="/apply" onClick={onNavigate}>Register</Link>
 
@@ -76,7 +76,7 @@ export function Header() {
 
   return (
 
-    <header className="sticky top-0 z-50 w-full border-b border-[#383b31] bg-[#10110d]/95 text-[#f1f2e8] backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[#183b5d] bg-[#0A2540]/95 text-white backdrop-blur-md">
 
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
 
@@ -218,13 +218,13 @@ export function Header() {
 
 
 
-      <div className="hidden border-t border-[#383b31] bg-[#1c2017] py-1.5 text-center text-xs text-[#d6f85b] lg:block">
+      <div className="hidden border-t border-[#183b5d] bg-[#081d33] py-1.5 text-center text-xs text-[#D4A017] lg:block">
 
         <span className="font-medium">{SITE_CONFIG.tagline}</span>
 
         <span className="mx-2 text-[#777d6e]">|</span>
 
-        <span className="text-[#969c8b]">Powered by {SITE_CONFIG.poweredBy}</span>
+        <span className="text-[#b7c8da]">Powered by {SITE_CONFIG.poweredBy}</span>
 
       </div>
 

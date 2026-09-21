@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Target, Eye, Heart, Award, Rocket, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Button } from "@/components/ui/button";
+import { PageImage } from "@/components/layout/page-image";
 import { CORE_VALUES, SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -43,6 +44,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      {/* TODO: swap with official SkillGrowVex branded image */}
+      <section className="container mx-auto px-4 pb-20 lg:px-8"><PageImage src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&auto=format&fit=crop" alt="Technology learners collaborating in a workshop" /></section>
 
       <section className="bg-brand-cream py-20 dark:bg-navy-900/30">
         <div className="container mx-auto px-4 lg:px-8">

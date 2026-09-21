@@ -27,9 +27,12 @@ export default function CareerRoadmapPage() {
                       ? "border-success-500/30 bg-success-50 dark:bg-success-500/10"
                       : "border-navy-100 bg-white dark:border-navy-700 dark:bg-navy-900"
                   }`}
+                import { PageImage } from "@/components/layout/page-image";
                 >
                   <div
                     className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold ${
+                          {/* TODO: swap with official SkillGrowVex branded image */}
+                          <PageImage src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop" alt="Career planning session with technology learners" className="mb-12" />
                       index === CAREER_ROADMAP.length - 1
                         ? "bg-success-500 text-white"
                         : "bg-brand-gradient text-white"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mail, MapPin, Clock } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { SITE_CONFIG } from "@/lib/constants";
+import { PageImage } from "@/components/layout/page-image";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -22,6 +23,8 @@ export default function ContactPage() {
 
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
+          {/* TODO: swap with official SkillGrowVex branded image */}
+          <PageImage src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&auto=format&fit=crop" alt="Professional team discussion for learner support" className="mb-12" />
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="space-y-8">
               <div className="flex items-start gap-4">

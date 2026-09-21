@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { formatCategory } from "@/lib/utils";
 import { CATEGORIES } from "@/lib/constants";
 import { db } from "@/lib/db";
+import { PageImage } from "@/components/layout/page-image";
 
 export const metadata: Metadata = {
   title: "Internship Programs",
@@ -48,6 +49,8 @@ export default async function ProgramsPage({ searchParams }: ProgramsPageProps) 
 
       <section className="py-12">
         <div className="container mx-auto px-4 lg:px-8">
+          {/* TODO: swap with official SkillGrowVex branded image */}
+          <PageImage src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop" alt="Developer learning from a laptop in a technology workspace" className="mb-10" />
           <div className="flex flex-wrap gap-2 mb-8">
             <Link href="/programs">
               <Badge

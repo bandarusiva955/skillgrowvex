@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DM_Mono, Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ClerkProviderWrapper } from "@/components/layout/clerk-provider-wrapper";
@@ -8,6 +9,9 @@ import { BackToTop } from "@/components/layout/back-to-top";
 import { CursorGlow } from "@/components/layout/cursor-glow";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
+
+const displayFont = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const monoFont = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
 export const dynamic = "force-dynamic";
 
@@ -76,7 +80,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans">
+      <body className={`${displayFont.variable} ${monoFont.variable} min-h-screen flex flex-col font-sans`}>
         <ClerkProviderWrapper>{content}</ClerkProviderWrapper>
       </body>
     </html>
