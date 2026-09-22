@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/page-hero";
+import { PageImage } from "@/components/layout/page-image";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Star, Trophy } from "lucide-react";
@@ -11,12 +12,9 @@ export const metadata: Metadata = {
 };
 
 const SUCCESS_HIGHLIGHTS = [
-  import { PageImage } from "@/components/layout/page-image";
   {
     icon: Star,
     title: "Student Reviews",
-            {/* TODO: swap with official SkillGrowVex branded image */}
-            <PageImage src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop" alt="Students collaborating on a technology learning project" className="mb-12" />
     description: "Real feedback from students who completed our internship programs.",
   },
   {
@@ -46,6 +44,7 @@ export default function StudentSuccessPage() {
 
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
+          <PageImage src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop" alt="Students collaborating on a technology learning project" className="mb-12" />
           <div className="mb-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {SUCCESS_HIGHLIGHTS.map((item) => {
               const Icon = item.icon;

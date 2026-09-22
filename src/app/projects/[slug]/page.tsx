@@ -1,27 +1,74 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { notFound } from "next/navigation";
-import { PROJECTS } from "@/lib/academy-data";
-
-type ProjectPageProps = { params: Promise<{ slug: string }> };
-
-function slugify(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const project = PROJECTS.find(([title]) => slugify(title) === slug);
-  return project ? { title: project[0], description: project[3] } : { title: "Project not found" };
-}
-
-export default async function ProjectCaseStudyPage({ params }: ProjectPageProps) {
-  const { slug } = await params;
-  const project = PROJECTS.find(([title]) => slugify(title) === slug);
-  if (!project) notFound();
-  const [title, category, technologies, description] = project;
+import { PageHero } from "@/components/layout/page-hero";
 import { PageImage } from "@/components/layout/page-image";
+import { Button } from "@/components/ui/button";
+import { FileText, ScanSearch, Upload, CheckCircle } from "lucide-react";
 
-  return <main className="academy-case-study"><section className="academy-case-hero"><div className="academy-container"><Link href="/projects" className="academy-case-back"><ArrowLeft size={16} /> Back to projects</Link><span className="academy-kicker">{category}</span><h1>{title}</h1><p>{description}</p><div className="academy-case-actions"><Link href="/contact" className="academy-primary-button">Discuss this project <ArrowUpRight size={16} /></Link></div></div></section>{/* TODO: swap with official SkillGrowVex branded image */}<div className="academy-container py-10"><PageImage src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop" alt={`${title} project technology case study`} /></div><section className="academy-case-body"><div className="academy-container academy-case-grid"><div><span className="academy-kicker">CASE STUDY FRAMEWORK</span><h2>Build it like a<br /><em>real product.</em></h2><p>Each project case study is structured around a clear problem, a thoughtful solution, an understandable architecture, and evidence of the decisions made along the way.</p></div><div className="academy-case-details"><article><span>Problem</span><h3>What needs to be improved?</h3><p>Define the user, business context, constraints, and success criteria before writing the first line of code.</p></article><article><span>Solution</span><h3>How does the product help?</h3><p>Translate the problem into a focused workflow, useful interface, and maintainable implementation.</p></article><article><span>Technology stack</span><h3>{technologies}</h3><div className="academy-case-checks"><span><CheckCircle2 size={15} /> Architecture notes</span><span><CheckCircle2 size={15} /> Project walkthrough</span><span><CheckCircle2 size={15} /> Portfolio documentation</span></div></article></div></div></section><section className="academy-case-final"><div className="academy-container"><h2>Ready to build<br /><em>your own proof?</em></h2><Link href="/courses" className="academy-primary-button">Explore learning paths <ArrowUpRight size={16} /></Link></div></section></main>;
-}
+export const metadata: Metadata = {
+  title: "Resume Review",
+  description: "Get professional ATS resume review and career presentation feedback at SkillGrow Vex Academy.",
+};
+
+const REVIEW_AREAS = [
+  "Resume Formatting",
+  "ATS Compatibility",
+  "Skills Presentation",
+  "Projects & Achievements",
+  "Professional Presentation",
+];
+
+const UPLOAD_TYPES = [
+  "Resume PDF",
+  "GitHub Profile",
+  "LinkedIn Profile",
+  "Portfolio Website",
+];
+
+export default function ResumeReviewPage() {
+  return (
+    <div>
+      <PageHero
+        title="Resume Review Portal"
+        subtitle="Get expert mentor feedback on your resume, ATS compatibility, and professional presentation."
+      />
+
+      <div className="container mx-auto px-4 pt-12 lg:px-8">
+        <PageImage src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&auto=format&fit=crop" alt="Professional resume review workspace" />
+      </div>
+
+      <section className="py-16">
+        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="rounded-2xl border border-navy-100 bg-white p-8 shadow-premium dark:border-navy-700 dark:bg-navy-900">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500">
+                <Upload className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-xl font-bold text-brand-navy dark:text-white">
+                What You Can Upload
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {UPLOAD_TYPES.map((type) => (
+                  <li key={type} className="flex items-center gap-2 text-sm text-navy-600 dark:text-navy-300">
+                    <CheckCircle className="h-4 w-4 text-success-500" />
+                    {type}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-navy-100 bg-white p-8 shadow-premium dark:border-navy-700 dark:bg-navy-900">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500">
+                <ScanSearch className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-xl font-bold text-brand-navy dark:text-white">
+                What We Review
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {REVIEW_AREAS.map((area) => (
+                  <li key={area} className="flex items-center gap-2 text-sm text-navy-600 dark:text-navy-300">
+                    <FileText className="h-4 w-4 text-primary-500" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>

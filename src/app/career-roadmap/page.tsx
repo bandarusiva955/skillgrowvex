@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/page-hero";
+import { PageImage } from "@/components/layout/page-image";
 import { CAREER_ROADMAP } from "@/lib/constants";
 import { ArrowDown, CheckCircle } from "lucide-react";
 
@@ -18,6 +19,7 @@ export default function CareerRoadmapPage() {
 
       <section className="py-16">
         <div className="container mx-auto max-w-3xl px-4 lg:px-8">
+          <PageImage src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop" alt="Career planning session with technology learners" className="mb-12" />
           <div className="space-y-2">
             {CAREER_ROADMAP.map((step, index) => (
               <div key={step}>
@@ -27,12 +29,9 @@ export default function CareerRoadmapPage() {
                       ? "border-success-500/30 bg-success-50 dark:bg-success-500/10"
                       : "border-navy-100 bg-white dark:border-navy-700 dark:bg-navy-900"
                   }`}
-                import { PageImage } from "@/components/layout/page-image";
                 >
                   <div
                     className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold ${
-                          {/* TODO: swap with official SkillGrowVex branded image */}
-                          <PageImage src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop" alt="Career planning session with technology learners" className="mb-12" />
                       index === CAREER_ROADMAP.length - 1
                         ? "bg-success-500 text-white"
                         : "bg-brand-gradient text-white"
