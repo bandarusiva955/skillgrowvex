@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/page-hero";
 import { PageImage } from "@/components/layout/page-image";
@@ -38,4 +38,24 @@ export default function ProjectsPage() {
                 <h3 className="font-display text-lg font-semibold text-brand-navy dark:text-white">
                   {title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed
+                <p className="mt-2 text-sm leading-relaxed text-navy-500 dark:text-navy-400">
+                  {description}
+                </p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary-600">{category}</p>
+                <p className="mt-2 text-xs text-navy-500">{technologies}</p>
+                <Link href={`/projects/${slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700">View case study <ArrowUpRight className="h-4 w-4" /></Link>
+              </div>
+              );
+            })}
+          </div>
+
+          <div className="rounded-2xl bg-brand-cream p-8 dark:bg-navy-900/50">
+            <p className="text-xs font-semibold uppercase tracking-wide text-primary-600">Coming soon</p>
+            <h3 className="mt-2 font-display text-xl font-bold text-brand-navy dark:text-white">RAG Knowledge Assistant, AI Interview Coach, Multi-Agent Research Assistant</h3>
+            <p className="mt-3 text-sm text-navy-500">These are future project directions, clearly separated from the current project catalogue.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
