@@ -1,60 +1,45 @@
-import Link from "next/link";
-import Image from "next/image";
-import type { CSSProperties } from "react";
-import { ArrowUpRight, BriefcaseBusiness, CheckCircle2, GitBranch, GraduationCap, MessageCircle, Sparkles } from "lucide-react";
-import { FAQS, INTERNSHIPS, JOURNEY, PROJECTS } from "@/lib/academy-data";
-import { PageImage } from "@/components/layout/page-image";
+﻿"use client";
 
-export function ValueStrip() {
-  const values = [[GraduationCap, "Learn practically", "Structured paths"], [GitBranch, "Build real projects", "Portfolio evidence"], [MessageCircle, "Get mentored", "Feedback that helps"], [BriefcaseBusiness, "Gain experience", "Internship-style work"], [Sparkles, "Grow with purpose", "Career readiness"]] as const;
-  return <section className="academy-value-strip" aria-label="Learning benefits">{values.map(([Icon, title, text]) => <div key={title}><Icon size={20} /><span><strong>{title}</strong><small>{text}</small></span></div>)}</section>;
-}
+import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { FAQ_ITEMS } from "@/lib/constants";
 
-const JOURNEY_IMAGES = [
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop",
-];
+export function FAQSection() {
+  return (
+    <section className="py-20">
+      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="font-display text-3xl font-bold text-brand-navy lg:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-4 text-navy-500">
+            Everything you need to know about SkillGrowVex Academy.
+          </p>
+        </motion.div>
 
-export function JourneySection() {
-  return <section className="academy-section academy-journey" id="journey"><div className="academy-container"><div className="academy-section-heading"><span className="academy-kicker">THE SGV METHOD</span><h2>More than courses.<br /><em>A complete career journey.</em></h2><p>Learning is only the beginning. Build practical skills, create real projects, gain experience, and develop the portfolio you need for your career.</p></div><div className="academy-journey-grid">{JOURNEY.map(([number, title, text], index) => <article key={number} style={{ "--journey-index": index } as CSSProperties}><span>{number}</span><div className="academy-journey-photo"><Image src={JOURNEY_IMAGES[index]} alt={title} fill sizes="200px" style={{ objectFit: "cover" }} /></div><h3>{title}</h3><p>{text}</p>{index < JOURNEY.length - 1 && <b className="academy-journey-arrow">→</b>}</article>)}</div></div></section>;
-}
-
-export function WhySection() {
-  const reasons = [["01", "Practical learning", "Learn by building instead of only watching."], ["02", "Real projects", "Work on portfolio-oriented problem statements."], ["03", "AI-first skills", "Explore technologies relevant to the modern AI economy."], ["04", "Live mentorship", "Get guidance while learning and building."], ["05", "Internship experience", "Apply knowledge through structured practical work."], ["06", "Career readiness", "Develop your resume, GitHub, portfolio, and interview confidence."]];
-  return <section className="academy-section academy-why" id="why-sgv"><div className="academy-container"><div className="academy-section-heading split"><div><span className="academy-kicker">WHY SKILL GROW VEX</span><h2>More than courses.<br /><em>Built for momentum.</em></h2></div><p>A focused learning environment for students and fresh graduates who want practical evidence of what they can do.</p></div><div className="academy-why-grid">{reasons.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight size={17} /></article>)}</div></div></section>;
-}
-
-export function AIEraSection() {
-  return <section className="academy-section academy-ai-era"><div className="academy-container academy-ai-layout"><div className="academy-ai-copy"><span className="academy-kicker">THE AI-FIRST CAREER ERA</span><h2>Learn AI.<br /><em>Build with purpose.</em></h2><p>Modern technology careers require more than course completion. They require curiosity, responsible tool use, strong fundamentals, and a portfolio that explains your thinking.</p>{/* TODO: swap with official SkillGrowVex branded image */}<PageImage src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=1000&auto=format&fit=crop" alt="Artificial intelligence code on a technology screen" className="mt-8" /><Link href="/courses/generative-ai" className="academy-primary-button mt-6">Explore AI learning <ArrowUpRight size={16} /></Link></div><div className="academy-ai-flow"><div><span>01</span><strong>Learn AI</strong></div><b>+</b><div><span>02</span><strong>Build with AI</strong></div><b>+</b><div><span>03</span><strong>Use AI responsibly</strong></div><b>+</b><div><span>04</span><strong>Create a portfolio</strong></div><b>+</b><div className="is-final"><span>05</span><strong>Career readiness</strong></div></div></div></section>;
-}
-
-export function HomepageContact() {
-  return <section className="academy-section academy-home-contact" id="contact"><div className="academy-container academy-home-contact-layout"><div><span className="academy-kicker">LET&apos;S TALK</span><h2>Have a question<br /><em>about your next step?</em></h2><p>Tell us what you want to learn or build, and the team can point you toward the right starting place.</p></div><div className="academy-contact-links"><Link href="/contact" className="academy-primary-button">Talk to Skill Grow Vex <ArrowUpRight size={16} /></Link><a href="mailto:support@skillgrowvex.com">support@skillgrowvex.com</a><span>Use the contact form for course, internship, and career guidance enquiries.</span></div></div></section>;
-}
-
-export function InternshipSection() {
-  return <section className="academy-section academy-internships" id="internships"><div className="academy-container"><div className="academy-section-heading split"><div><span className="academy-kicker">INTERNSHIPS</span><h2>Turn learning<br /><em>into real experience.</em></h2>{/* TODO: swap with official SkillGrowVex branded image */}<PageImage src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1000&auto=format&fit=crop" alt="Technology team collaborating during an internship project" className="mt-7" /></div><p>Practical internship tracks built around tasks, projects, feedback, and applicable completion credentials. Apply to understand the current availability and process.</p></div><div className="academy-internship-grid">{INTERNSHIPS.map(([title, duration, skills], index) => <article key={title}><span className="academy-index">{String(index + 1).padStart(2, "0")} / TRACK</span><h3>{title}</h3><p>{skills}</p><small>{duration} · Practical tasks · Mentor guidance</small><Link href="/apply" className="academy-card-link">Apply for internship <ArrowUpRight size={16} /></Link></article>)}</div></div></section>;
-}
-
-export function ProjectsSection() {
-  return <section className="academy-section academy-projects" id="projects"><div className="academy-container"><div className="academy-section-heading split"><div><span className="academy-kicker">PROJECT STUDIO</span><h2>Build a portfolio<br /><em>that speaks for you.</em></h2></div><p>Project examples are intentionally designed to become evidence of your thinking, implementation, and communication.</p></div><div className="academy-project-label">LIVE PROJECT DIRECTIONS</div><div className="academy-project-grid">{PROJECTS.map(([title, category, technologies, description]) => { const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); return <article key={title}><div><span>{category}</span><h3>{title}</h3></div><p>{description}</p><small>{technologies}</small><Link href={`/projects/${slug}`} className="academy-card-link">View case study <ArrowUpRight size={16} /></Link></article>; })}</div><div className="academy-coming-soon"><span>COMING SOON</span><p>RAG Knowledge Assistant · AI Interview Coach · Multi-Agent Research Assistant</p></div></div></section>;
-}
-
-export function ValueChainSection() {
-  return <section className="academy-section academy-value-chain"><div className="academy-container"><div className="academy-section-heading"><span className="academy-kicker">THE DIFFERENCE</span><h2>Don&apos;t just learn.<br /><em>Build experience.</em></h2><p>Technical learning becomes more useful when it connects to work you can explain, show, and improve.</p></div><div className="academy-chain">{["Course", "Practice", "Project", "Mentorship", "Internship", "Portfolio", "Career prep"].map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong>{index < 6 && <b>→</b>}</div>)}</div></div></section>;
-}
-
-export function MentorshipSection() {
-  return <section className="academy-section academy-mentorship"><div className="academy-container academy-mentorship-layout"><div>{/* TODO: swap with official SkillGrowVex branded image */}<PageImage src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1000&auto=format&fit=crop" alt="Mentor guiding learners through a project review" /></div><div className="academy-section-heading"><span className="academy-kicker">MENTORSHIP</span><h2>Learn with guidance.<br /><em>Build with confidence.</em></h2><p>Use mentor conversations and project reviews to understand what to try next, how to improve your work, and how to present it clearly.</p><div className="academy-mentor-points"><span>Live mentor sessions</span><span>Project reviews</span><span>Doubt clearing</span><span>Portfolio feedback</span></div><Link href="/contact" className="academy-outline-button">Ask about mentorship <ArrowUpRight size={16} /></Link></div></div></section>;
-}
-
-export function DashboardPreview() {
-  return <section className="academy-section academy-dashboard"><div className="academy-container academy-dashboard-layout"><div className="academy-section-heading"><span className="academy-kicker">YOUR LEARNING HQ</span><h2>See your progress.<br /><em>Keep moving.</em></h2><p>A future-ready student workspace can bring courses, assignments, projects, certificates, and career preparation into one clear view.</p><Link href="/student" className="academy-outline-button">Student portal <ArrowUpRight size={16} /></Link></div><div className="academy-dashboard-card"><div className="academy-dashboard-top"><span>MY LEARNING</span><strong>Good morning, learner</strong></div><div className="academy-progress"><div><span>Full Stack Development</span><strong>64%</strong></div><div className="academy-progress-bar"><i /></div></div><div className="academy-dashboard-grid"><div><small>PROJECTS</small><strong>03 / 05</strong><span>Portfolio progress</span></div><div><small>SKILLS</small><strong>12</strong><span>In your toolkit</span></div><div><small>INTERNSHIP</small><strong>Active</strong><span>Next review Friday</span></div><div><small>CERTIFICATES</small><strong>01</strong><span>Ready to verify</span></div></div><div className="academy-dashboard-task"><CheckCircle2 size={18} /><span><small>NEXT TASK</small><strong>Publish your project README</strong></span><ArrowUpRight size={17} /></div></div></div></section>;
-}
-
-export function FAQSectionNew() {
-  return <section className="academy-section academy-faq" id="faq"><div className="academy-container academy-faq-layout"><div className="academy-section-heading"><span className="academy-kicker">QUESTIONS, ANSWERED</span><h2>Make your<br /><em>next move clear.</em></h2><p>Still deciding? Contact the team and we will help you choose a practical starting point.</p><Link href="/contact" className="academy-card-link">Talk to us <ArrowUpRight size={16} /></Link></div><div className="academy-faq-list">{FAQS.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></div></section>;
+        <Accordion type="single" collapsible className="w-full">
+          {FAQ_ITEMS.map((item, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger className="text-left font-medium">
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-navy-500 leading-relaxed">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
 }
