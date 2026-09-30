@@ -19,13 +19,33 @@ export function CourseGrid() {
           <button key={item} type="button" role="tab" aria-selected={filter === item} className={filter === item ? "is-active" : ""} onClick={() => setFilter(item)}>{item}</button>
         ))}
       </div>
-      <div className="academy-course-grid">
-        {visibleCourses.map((course) => (
-          <article className="academy-course-card" key={course.slug}>
-            <div className="academy-course-image"><Image src={course.image} alt={`${course.title} course`} fill sizes="(max-width: 620px) 100vw, (max-width: 980px) 50vw, 25vw" /><span>{course.category}</span></div>
-            <div className="academy-course-content"><div className="academy-course-meta"><span><Layers3 size={14} /> {course.level}</span><span><Clock3 size={14} /> {course.duration}</span></div><h3>{course.title}</h3><p>{course.description}</p><div className="academy-tech-list">{course.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div><div className="academy-course-footer"><strong>{course.price}</strong><Link href={`/courses/${course.slug}`} className="academy-card-link">View course <ArrowUpRight size={16} /></Link></div></div>
-          </article>
-  ))}
+      <div className="playing-cards-grid">
+        {visibleCourses.map((course, i) => {
+          const tilt = i % 2 === 0 ? -6 : 6;
+          return (
+            <div key={course.slug} className="playing-card course-playing-card" style={{ "--tilt": `${tilt}deg` } as React.CSSProperties}>
+              <div className="playing-card-inner">
+                <div className="playing-card-front">
+                  <Image src={course.image} alt={course.title} fill sizes="220px" style={{ objectFit: "cover" }} />
+                  <div className="playing-card-front-overlay">
+                    <span>{course.category}</span>
+                    <h3>{course.title}</h3>
+                  </div>
+                </div>
+                <div className="playing-card-back">
+                  <div className="playing-card-back-meta">
+                    <span><Layers3 size={14} /> {course.level}</span>
+                    <span><Clock3 size={14} /> {course.duration}</span>
+                  </div>
+                  <strong className="playing-card-price">{course.price}</strong>
+                  <Link href={`/courses/${course.slug}`} className="academy-primary-button">
+                    View course <ArrowUpRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

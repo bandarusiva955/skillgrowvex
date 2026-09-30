@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" role="img" aria-label="AI chip">
+<defs>
+<linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#123e65"/><stop offset="1" stop-color="#0A2540"/></linearGradient>
+<radialGradient id="g2" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#D4A017" stop-opacity=".45"/><stop offset="1" stop-color="#D4A017" stop-opacity="0"/></radialGradient>
+</defs>
+<style>
+.chip{fill:#0A2540;stroke:#D4A017;stroke-width:3;animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{stroke-opacity:.5}50%{stroke-opacity:1}}
+.pin{stroke:#D4A017;stroke-width:3;stroke-linecap:round;opacity:.8}
+.orbit{transform-origin:150px 100px;animation:spin 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai{fill:#D4A017;font-family:Segoe UI,Arial,sans-serif;font-size:40px;font-weight:800;text-anchor:middle}
+</style>
+<rect width="300" height="200" rx="18" fill="url(#bg2)"/>
+<circle cx="150" cy="100" r="95" fill="url(#g2)"/>
+<line class="pin" x1="125" y1="36" x2="125" y2="52"/><line class="pin" x1="150" y1="36" x2="150" y2="52"/><line class="pin" x1="175" y1="36" x2="175" y2="52"/>
+<line class="pin" x1="125" y1="148" x2="125" y2="164"/><line class="pin" x1="150" y1="148" x2="150" y2="164"/><line class="pin" x1="175" y1="148" x2="175" y2="164"/>
+<line class="pin" x1="88" y1="75" x2="104" y2="75"/><line class="pin" x1="88" y1="100" x2="104" y2="100"/><line class="pin" x1="88" y1="125" x2="104" y2="125"/>
+<line class="pin" x1="196" y1="75" x2="212" y2="75"/><line class="pin" x1="196" y1="100" x2="212" y2="100"/><line class="pin" x1="196" y1="125" x2="212" y2="125"/>
+<rect class="chip" x="104" y="52" width="92" height="96" rx="12"/>
+<text class="ai" x="150" y="114">AI</text>
+<g class="orbit"><circle cx="150" cy="14" r="5" fill="#ffffff"/></g>
+<g class="orbit" style="animation-duration:8s;animation-direction:reverse"><circle cx="150" cy="186" r="4" fill="#D4A017"/></g>
+</svg>

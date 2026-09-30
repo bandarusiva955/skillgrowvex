@@ -336,3 +336,114 @@ body { overflow-x: hidden; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+.course-playing-card {
+  height: 300px;
+}
+.playing-card-back-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #b7c8da;
+}
+.playing-card-back-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.playing-card-price {
+  color: #D4A017;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+}
+.academy-mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 60px;
+  margin-top: 0.75rem;
+  padding: 0 4px;
+}
+.chart-bar {
+  flex: 1;
+  background: linear-gradient(to top, #D4A017, #e8bd49);
+  border-radius: 4px 4px 0 0;
+  animation: chart-grow 2s ease-in-out infinite alternate;
+}
+.chart-bar:nth-child(2) { animation-delay: 0.15s; }
+.chart-bar:nth-child(3) { animation-delay: 0.3s; }
+.chart-bar:nth-child(4) { animation-delay: 0.45s; }
+.chart-bar:nth-child(5) { animation-delay: 0.6s; }
+.chart-bar:nth-child(6) { animation-delay: 0.75s; }
+@keyframes chart-grow {
+  from { transform: scaleY(0.85); opacity: 0.7; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+.academy-mini-progress-ring {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem;
+}
+.academy-mini-progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.academy-mini-progress-ring circle {
+  fill: none;
+  stroke-width: 8;
+}
+.ring-bg {
+  stroke: #e5e7eb;
+}
+.ring-fill {
+  stroke: #D4A017;
+  stroke-linecap: round;
+  stroke-dasharray: 264;
+  stroke-dashoffset: 264;
+  animation: ring-progress 1.8s ease-out forwards;
+}
+@keyframes ring-progress {
+  to { stroke-dashoffset: 95; }
+}
+.ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ring-label strong {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0A2540;
+}
+.ring-label span {
+  font-size: 0.6rem;
+  color: #64748b;
+  text-align: center;
+}
+.hero-main-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 600 / 440;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35);
+  transform: rotate(2deg);
+  background: #0A2540;
+}
+.hero-main-image img {
+  object-fit: cover;
+}
+.hero-float-anim {
+  animation: hero-float 4s ease-in-out infinite;
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
