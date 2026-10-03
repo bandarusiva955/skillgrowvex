@@ -1,23 +1,69 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { formatCategory } from "@/lib/utils";
 
-export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET() {
   try {
     await requireAdmin();
-    const { id } = await params;
-    const { isRead } = await req.json();
 
-    const message = await db.contactMessage.update({
-      where: { id },
-      data: { isRead: Boolean(isRead) },
+    const enrollments = await db.enrollment.findMany({
+      include: { internship: { select: { category: true, title: true } } },
     });
 
-    return NextResponse.json({ message });
-  } catch (error) {
-    if (error instanceof Error && error.message === "Forbidden") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
-    return NextResponse.json({ error: "Update failed" }, { status: 500 });
+    const categoryMap = new Map<string, number>();
+    enrollments.forEach((e) => {
+      const cat = formatCategory(e.internship.category);
+      categoryMap.set(cat, (categoryMap.get(cat) || 0) + 1);
+    });
+
+    const enrollmentsByCategory = Array.from(categoryMap.entries()).map(
+      ([name, count]) => ({ name, count })
+    );
+
+    const submissions = await db.submission.groupBy({
+      by: ["status"],
+      _count: true,
+    });
+
+    const submissionsByStatus = submissions.map((s) => ({
+      name: s.status.replace("_", " "),
+      value: s._count,
+    }));
+
+    const monthlyMap = new Map<string, number>();
+    enrollments.forEach((e) => {
+      const month = new Date(e.enrolledAt).toLocaleString("en-US", {
+        month: "short",
+        year: "2-digit",
+      });
+      monthlyMap.set(month, (monthlyMap.get(month) || 0) + 1);
+    });
+
+    const monthlyEnrollments = Array.from(monthlyMap.entries()).map(
+      ([month, count]) => ({ month, count })
+    );
+
+    const programMap = new Map<string, number>();
+    enrollments.forEach((e) => {
+      programMap.set(
+        e.internship.title,
+        (programMap.get(e.internship.title) || 0) + 1
+      );
+    });
+
+    const topPrograms = Array.from(programMap.entries())
+      .map(([name, enrollments]) => ({ name, enrollments }))
+      .sort((a, b) => b.enrollments - a.enrollments)
+      .slice(0, 5);
+
+    return NextResponse.json({
+      enrollmentsByCategory,
+      submissionsByStatus,
+      monthlyEnrollments,
+      topPrograms,
+    });
+  } catch {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 }
