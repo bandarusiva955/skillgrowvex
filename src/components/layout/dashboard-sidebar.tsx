@@ -15,6 +15,7 @@ import {
   BarChart3,
   ClipboardCheck,
   GraduationCap,
+  Mail,
 } from "lucide-react";
 
 const studentLinks = [
@@ -29,6 +30,7 @@ const studentLinks = [
 
 const adminLinks = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/applications", label: "Applications", icon: Mail },
   { href: "/admin/students", label: "Students", icon: Users },
   { href: "/admin/internships", label: "Internships", icon: GraduationCap },
   { href: "/admin/submissions", label: "Submissions", icon: ClipboardCheck },
