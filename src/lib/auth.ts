@@ -1,10 +1,11 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
+﻿import { auth, currentUser } from "@clerk/nextjs/server";
 import { UserRole } from "@prisma/client";
 import { db } from "./db";
 import { notifyAdminNewSignup } from "./notify";
 
 export function resolveRoleForClerkId(clerkId: string): UserRole {
-  if (clerkId === process.env.SUPER_ADMIN_ID) {
+  const superAdminId = (process.env.SUPER_ADMIN_ID || "").trim();
+  if (superAdminId && clerkId.trim() === superAdminId) {
     return UserRole.SUPER_ADMIN;
   }
   return UserRole.STUDENT;
