@@ -5,6 +5,7 @@ import { CourseGrid } from "@/components/home/course-grid";
 import { AIEraSection, DashboardPreview, FAQSectionNew, HomepageContact, InternshipSection, JourneySection, MentorshipSection, ProjectsSection, ValueChainSection, ValueStrip, WhySection } from "@/components/home/academy-sections";
 import { PricingShowcase } from "@/components/home/pricing-showcase";
 import { TextMarquee } from "@/components/home/marquee-strip";
+import { FadeUp } from "@/components/home/fade-up";
 
 export default function HomePage() {
   return (
@@ -13,7 +14,13 @@ export default function HomePage() {
         <div className="academy-hero-orb academy-hero-orb-one" />
         <div className="academy-hero-orb academy-hero-orb-two" />
         <div className="academy-container academy-hero-layout">
-          <div className="academy-hero-copy"><span className="academy-eyebrow"><Sparkles size={15} /> LEARN &middot; BUILD &middot; EXPERIENCE &middot; GROW</span><h1>Build skills.<br /><em>Gain experience.</em><br />Grow your career.</h1><p>Practical IT courses, real-world projects, internships, and mentorship designed to help students and freshers become industry-ready.</p><div className="academy-hero-actions"><Link href="/programs" className="academy-primary-button">Explore courses <ArrowRight size={17} /></Link><Link href="/apply" className="academy-secondary-button">Explore internships</Link></div><div className="academy-hero-notes"><span><ShieldCheck size={16} /> Practical learning</span><span><Users size={16} /> Mentor guidance</span><span><Code2 size={16} /> Portfolio projects</span></div></div>
+          <div className="academy-hero-copy">
+            <FadeUp delay={0}><span className="academy-eyebrow"><Sparkles size={15} /> LEARN &middot; BUILD &middot; EXPERIENCE &middot; GROW</span></FadeUp>
+            <FadeUp delay={0.08}><h1>Build skills.<br /><em>Gain experience.</em><br />Grow your career.</h1></FadeUp>
+            <FadeUp delay={0.16}><p>Practical IT courses, real-world projects, internships, and mentorship designed to help students and freshers become industry-ready.</p></FadeUp>
+            <FadeUp delay={0.24}><div className="academy-hero-actions"><Link href="/programs" className="academy-primary-button">Explore courses <ArrowRight size={17} /></Link><Link href="/apply" className="academy-secondary-button">Explore internships</Link></div></FadeUp>
+            <FadeUp delay={0.32}><div className="academy-hero-notes"><span><ShieldCheck size={16} /> Practical learning</span><span><Users size={16} /> Mentor guidance</span><span><Code2 size={16} /> Portfolio projects</span></div></FadeUp>
+          </div>
           <div className="academy-hero-dashboard hero-float-anim" aria-label="AI powered learning visual"><div className="academy-hero-photo"><Image src="/hero-ai-small.svg" alt="AI chip powering modern education" fill priority sizes="250px" /></div><div className="hero-main-image"><Image src="/hero-ai-main.svg" alt="AI neural network connecting learning, building and career growth" fill priority sizes="(max-width: 900px) 90vw, 520px" /></div><p className="academy-dashboard-caption">A clearer path from first lesson to career-ready work.</p></div>
         </div>
       </section>
