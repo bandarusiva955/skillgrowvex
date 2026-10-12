@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { ClerkSignUp } from "@/components/auth/clerk-sign-up";
+
+export const metadata: Metadata = {
+  title: "Sign Up",
+  robots: { index: false, follow: false },
+};
 
 export default function SignUpPage() {
   return (

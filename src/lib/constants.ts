@@ -1,5 +1,13 @@
 ﻿import { InternshipCategory } from "@prisma/client";
 
+// Canonical production URL. Falls back to NEXT_PUBLIC_APP_URL (useful for
+// staging/preview deployments) and only drops to localhost in local dev.
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  (process.env.NODE_ENV === "production"
+    ? "https://skillgrowvexacademy.com"
+    : "http://localhost:3000");
+
 export const SITE_CONFIG = {
   name: "SkillGrow Vex Academy",
   shortName: "SkillGrow Vex",
@@ -26,6 +34,7 @@ export const SITE_CONFIG = {
     title: "Founder & Program Director",
     bio: "Bandaru Siva founded SkillGrow Vex Academy as an initiative of Grow Vex Technologies — a growing startup committed to helping students gain practical experience through internships, real-world projects, mentorship, and career preparation.",
   },
+  url: SITE_URL,
   social: {
     linkedin: "https://linkedin.com/company/skillgrowvex",
     twitter: "https://twitter.com/skillgrowvex",

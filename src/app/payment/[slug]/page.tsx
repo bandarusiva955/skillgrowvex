@@ -10,7 +10,10 @@ type PaymentPageProps = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: PaymentPageProps): Promise<Metadata> {
   const { slug } = await params;
   const course = COURSES.find((item) => item.slug === slug);
-  return course ? { title: `Enroll in ${course.title}`, description: `Review your ${course.title} enrollment before payment.` } : { title: "Course payment" };
+  const base = { robots: { index: false, follow: false } };
+  return course
+    ? { ...base, title: `Enroll in ${course.title}`, description: `Review your ${course.title} enrollment before payment.` }
+    : { ...base, title: "Course payment" };
 }
 
 export default async function PaymentPage({ params }: PaymentPageProps) {
