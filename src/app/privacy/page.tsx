@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description: "Read SkillGrow Vex Academy's privacy policy to understand how we collect, use, and protect your personal data across our courses and internship programs.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

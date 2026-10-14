@@ -7,7 +7,8 @@ import { ArrowUpRight, BrainCircuit, Database, FolderOpen, Globe2 } from "lucide
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Explore practical AI, data, and full-stack project directions at Skill Grow Vex Academy.",
+  description: "Browse practical AI, data analytics, and full-stack project ideas at SkillGrow Vex Academy to build a portfolio that shows real, job-ready skills to employers.",
+  alternates: { canonical: "/projects" },
 };
 
 const projectIcons = [BrainCircuit, Database, Globe2, FolderOpen];

@@ -6,7 +6,8 @@ import { ArrowDown, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Career Roadmap",
-  description: "Your step-by-step journey from registration to career readiness at SkillGrow Vex Academy.",
+  description: "See the full career roadmap at SkillGrow Vex Academy — from registration and learning to projects, mentorship, resume building, and career readiness.",
+  alternates: { canonical: "/career-roadmap" },
 };
 
 export default function CareerRoadmapPage() {

@@ -3,7 +3,8 @@ import { VerifyForm } from "@/components/verify/verify-form";
 
 export const metadata: Metadata = {
   title: "Verify Certificate",
-  description: "Verify the authenticity of SkillGrowVex Academy certificates using certificate ID or QR code.",
+  description: "Verify the authenticity of SkillGrow Vex Academy internship and course certificates instantly using a certificate ID or QR code on our verification portal.",
+  alternates: { canonical: "/verify" },
 };
 
 interface VerifyPageProps {

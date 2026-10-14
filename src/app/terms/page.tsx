@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
+  description: "Read the terms and conditions for using SkillGrow Vex Academy's website, courses, and internship programs, including enrollment, refund, and certificate policies.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

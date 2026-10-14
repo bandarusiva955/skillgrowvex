@@ -3,7 +3,8 @@ import { CourseGrid } from "@/components/home/course-grid";
 
 export const metadata: Metadata = {
   title: "Courses",
-  description: "Explore practical Python, data, AI, development, and career courses at SkillGrow Vex Academy.",
+  description: "Explore practical Python, data analytics, machine learning, and full-stack courses at SkillGrow Vex Academy, built with real projects and mentor guidance.",
+  alternates: { canonical: "/courses" },
 };
 
 export default function CoursesPage() {

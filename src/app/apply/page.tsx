@@ -5,7 +5,8 @@ import { ApplicationForm } from "@/components/apply/application-form";
 
 export const metadata: Metadata = {
   title: "Apply Now",
-  description: "Apply for internship programs at SkillGrow Vex Academy.",
+  description: "Apply for Standard or Advanced internship programs at SkillGrow Vex Academy and start building practical IT skills, real projects, and a career-ready portfolio.",
+  alternates: { canonical: "/apply" },
 };
 
 export default function ApplyPage() {

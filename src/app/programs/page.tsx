@@ -11,7 +11,8 @@ import { PageImage } from "@/components/layout/page-image";
 
 export const metadata: Metadata = {
   title: "Internship Programs",
-  description: "Explore project-based internship programs in data analytics, Power BI, Python, ML, and more.",
+  description: "Explore project-based internship programs in data analytics, Power BI, Python, machine learning, and more at SkillGrow Vex Academy, with mentor-guided learning.",
+  alternates: { canonical: "/programs" },
 };
 
 interface ProgramsPageProps {

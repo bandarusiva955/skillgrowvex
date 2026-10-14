@@ -6,7 +6,8 @@ import { PageImage } from "@/components/layout/page-image";
 
 export const metadata: Metadata = {
   title: "Learning Paths & Pricing",
-  description: "Compare Skill Grow Vex Academy learning paths for practical IT skills, projects, mentorship, and career preparation.",
+  description: "Compare SkillGrow Vex Academy internship plans — Standard and Advanced — covering projects, mentorship, certificates, resume building, and career preparation.",
+  alternates: { canonical: "/pricing" },
 };
 
 export default function PricingPage() {

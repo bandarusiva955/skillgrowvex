@@ -6,7 +6,8 @@ import { PageImage } from "@/components/layout/page-image";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with SkillGrowVex Academy support team.",
+  description: "Contact SkillGrow Vex Academy for questions about internships, courses, enrollment, or certificates. Reach our team by email, WhatsApp, or the contact form.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

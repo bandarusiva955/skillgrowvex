@@ -7,7 +7,8 @@ import { FileText, ScanSearch, Upload, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Resume Review",
-  description: "Get professional ATS resume review and career presentation feedback at SkillGrow Vex Academy.",
+  description: "Get professional ATS resume review and career presentation feedback at SkillGrow Vex Academy to improve your resume, portfolio, and job application success.",
+  alternates: { canonical: "/resume-review" },
 };
 
 const REVIEW_AREAS = [

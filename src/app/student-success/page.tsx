@@ -8,7 +8,8 @@ import { Github, Linkedin, Star, Trophy } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Student Success",
-  description: "Success stories, testimonials, and achievements from SkillGrow Vex Academy students.",
+  description: "Read success stories, testimonials, and achievements from SkillGrow Vex Academy students who completed internships, built projects, and advanced their careers.",
+  alternates: { canonical: "/student-success" },
 };
 
 const SUCCESS_HIGHLIGHTS = [

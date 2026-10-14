@@ -8,7 +8,8 @@ import { CORE_VALUES, SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about SkillGrow Vex Academy — an initiative by Grow Vex Technologies.",
+  description: "SkillGrow Vex Academy is an initiative by Grow Vex Technologies helping students and freshers build real IT skills through internships, projects, mentorship.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [
