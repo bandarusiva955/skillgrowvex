@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { CursorGlow } from "@/components/layout/cursor-glow";
+import { ScrollReveal } from "@/components/layout/scroll-reveal";
 import { SITE_CONFIG, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -101,6 +102,7 @@ export default function RootLayout({
       <main className="flex-1">{children}</main>
       <Footer />
       <CursorGlow />
+      <ScrollReveal />
       <WhatsAppButton />
       <BackToTop />
     </ThemeProvider>
